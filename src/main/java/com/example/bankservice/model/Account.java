@@ -1,5 +1,6 @@
 package com.example.bankservice.model;
 
+import com.example.bankservice.model.enums.Currency;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -11,6 +12,7 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -19,7 +21,7 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "account_number")
+    @Column(unique = true, name = "account_number")
     private String accountNumber;
     private double balance;
     @Column(name = "is_active")
@@ -28,9 +30,6 @@ public class Account {
     private Currency currency;
     @OneToOne
     @MapsId
+    @ToString.Exclude
     private User user;
-
-    public enum Currency {
-        USD, EUR, UAH;
-    }
 }

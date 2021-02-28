@@ -1,5 +1,6 @@
 package com.example.bankservice.model;
 
+import com.example.bankservice.model.enums.RoleName;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -20,8 +21,4 @@ public class Role {
     @Column(name = "role_name")
     @Enumerated(EnumType.STRING)
     private RoleName roleName;
-
-    public enum RoleName {
-        ADMIN, USER
-    }
 }
