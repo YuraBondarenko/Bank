@@ -23,7 +23,7 @@ public class User {
     @Column(name = "date_of_birth")
     private LocalDate dateOfBirth;
     @Column(unique = true, name = "phone_number")
-    private Long phoneNumber;
+    private String phoneNumber;
     @ToString.Exclude
     private String password;
     @ManyToMany

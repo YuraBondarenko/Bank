@@ -11,5 +11,5 @@ public interface UserService {
 
     User getById(Long id);
 
-    User getByPhoneNumber(Long phoneNumber);
+    User getByPhoneNumber(String phoneNumber);
 }

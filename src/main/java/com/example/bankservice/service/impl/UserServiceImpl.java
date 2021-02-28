@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getByPhoneNumber(Long phoneNumber) {
+    public User getByPhoneNumber(String phoneNumber) {
         return userRepository.getByPhoneNumber(phoneNumber).get();
     }
 }
