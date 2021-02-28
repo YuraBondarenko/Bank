@@ -7,5 +7,5 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface RoleRepository extends JpaRepository<Role, Long> {
     @Query(value = "from Role where roleName = ?1")
-    Optional<Role> getByName(String name);
+    Optional<Role> getByName(Role.RoleName name);
 }
