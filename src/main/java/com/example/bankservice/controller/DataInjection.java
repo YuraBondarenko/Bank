@@ -7,20 +7,14 @@ import com.example.bankservice.service.UserService;
 import java.time.LocalDate;
 import java.util.Set;
 import javax.annotation.PostConstruct;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 @Component
+@AllArgsConstructor
 public class DataInjection {
-    private RoleService roleService;
-    private UserService userService;
-
-    @Autowired
-    public DataInjection(RoleService roleService,
-                           UserService userService) {
-        this.roleService = roleService;
-        this.userService = userService;
-    }
+    private final RoleService roleService;
+    private final UserService userService;
 
     @PostConstruct
     public void inject() {
