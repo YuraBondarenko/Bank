@@ -66,7 +66,5 @@ public class DataInjection {
         transactionService.getAllByAccount(0, 3, firstAccount).forEach(System.out::println);
         System.out.println(user.toString());
         System.out.println(firstAccount.toString());
-
-        System.out.println(transactionService.getAllByAccount(0, 1, firstAccount).get(0).toString());
     }
 }
