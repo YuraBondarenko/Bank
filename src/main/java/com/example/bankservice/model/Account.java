@@ -30,4 +30,11 @@ public class Account {
     @ManyToOne
     @ToString.Exclude
     private User user;
+
+    public void setBalance(double balance) {
+        if (balance <= 0) {
+            throw new ArithmeticException("Balance after transaction cannot be less than 0");
+        }
+        this.balance = balance;
+    }
 }
