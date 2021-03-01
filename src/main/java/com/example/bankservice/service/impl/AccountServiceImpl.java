@@ -17,7 +17,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     @Override
+    public Account getByAccountNumber(String accountNumber) {
+        return accountRepository.getByAccountNumber(accountNumber);
+    }
+
+    @Override
     public Account getById(Long id) {
-        return accountRepository.getOne(id);
+        return accountRepository.getById(id);
     }
 }
