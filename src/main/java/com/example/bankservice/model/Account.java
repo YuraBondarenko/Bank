@@ -8,6 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
@@ -32,7 +33,7 @@ public class Account {
     private Currency currency;
     @ManyToOne
     @ToString.Exclude
-    @Column(nullable = false)
+    @JoinColumn(nullable = false)
     private User user;
 
     public void setBalance(double balance) {
