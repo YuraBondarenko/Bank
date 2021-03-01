@@ -26,6 +26,6 @@ public class User {
     private String phoneNumber;
     @ToString.Exclude
     private String password;
-    @ManyToMany
+        @ManyToMany
     private Set<Role> roles;
 }

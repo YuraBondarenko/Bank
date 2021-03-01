@@ -1,7 +1,6 @@
 package com.example.bankservice.service.impl;
 
 import com.example.bankservice.model.Role;
-import com.example.bankservice.model.enums.RoleName;
 import com.example.bankservice.repository.RoleRepository;
 import com.example.bankservice.service.RoleService;
 import lombok.AllArgsConstructor;

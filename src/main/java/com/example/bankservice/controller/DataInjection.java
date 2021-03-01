@@ -2,7 +2,6 @@ package com.example.bankservice.controller;
 
 import com.example.bankservice.model.Role;
 import com.example.bankservice.model.User;
-import com.example.bankservice.model.enums.RoleName;
 import com.example.bankservice.service.RoleService;
 import com.example.bankservice.service.UserService;
 import java.time.LocalDate;
@@ -20,11 +19,11 @@ public class DataInjection {
     @PostConstruct
     public void inject() {
         Role roleUser = new Role();
-        roleUser.setRoleName(RoleName.USER);
+        roleUser.setRoleName(Role.RoleName.USER);
         roleService.save(roleUser);
 
         Role roleAdmin = new Role();
-        roleAdmin.setRoleName(RoleName.ADMIN);
+        roleAdmin.setRoleName(Role.RoleName.ADMIN);
         roleService.save(roleAdmin);
 
         User user = new User();

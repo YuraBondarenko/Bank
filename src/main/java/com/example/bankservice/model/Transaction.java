@@ -1,6 +1,5 @@
 package com.example.bankservice.model;
 
-import com.example.bankservice.model.enums.Type;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,9 +8,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.ToString;
 
 @Data
 @Entity
@@ -22,12 +25,17 @@ public class Transaction {
     private Long id;
     private double amount;
     private LocalDateTime date;
-    @Column(name = "account_from")
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "account_from")
     private Account accountFrom;
-    @Column(name = "account_to")
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "account_to")
+    @ToString.Include(name = "accountTo.getId")
     private Account accountTo;
     @Enumerated(EnumType.STRING)
     private Type type;
+
+    public enum Type {
+        INCOMING, OUTCOMING
+    }
 }

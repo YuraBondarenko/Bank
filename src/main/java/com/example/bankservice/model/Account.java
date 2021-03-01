@@ -8,8 +8,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapsId;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.ToString;
@@ -28,8 +27,7 @@ public class Account {
     private boolean isActive;
     @Enumerated(EnumType.STRING)
     private Currency currency;
-    @OneToOne
-    @MapsId
+    @ManyToOne
     @ToString.Exclude
     private User user;
 }
