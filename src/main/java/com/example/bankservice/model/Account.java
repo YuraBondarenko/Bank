@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import lombok.Data;
 import lombok.ToString;
 
@@ -20,15 +21,18 @@ public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(unique = true, name = "account_number")
+    @Column(unique = true, name = "account_number", nullable = false)
     private String accountNumber;
+    @Min(0)
     private double balance;
     @Column(name = "is_active")
     private boolean isActive;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Currency currency;
     @ManyToOne
     @ToString.Exclude
+    @Column(nullable = false)
     private User user;
 
     public void setBalance(double balance) {

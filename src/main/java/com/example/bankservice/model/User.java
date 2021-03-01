@@ -20,12 +20,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @Column(name = "date_of_birth")
+    @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
-    @Column(unique = true, name = "phone_number")
+    @Column(unique = true, name = "phone_number", nullable = false)
     private String phoneNumber;
     @ToString.Exclude
+    @Column(nullable = false)
     private String password;
     @ManyToMany
+    @Column(nullable = false)
     private Set<Role> roles;
 }

@@ -1,6 +1,7 @@
 package com.example.bankservice.model;
 
 import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -10,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
 import lombok.Data;
 
 @Data
@@ -19,15 +21,18 @@ public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Min(0)
     private double amount;
+    @Column(nullable = false)
     private LocalDateTime date;
     @ManyToOne
-    @JoinColumn(name = "account_from")
+    @JoinColumn(name = "account_from", nullable = false)
     private Account accountFrom;
     @ManyToOne
-    @JoinColumn(name = "account_to")
+    @JoinColumn(name = "account_to", nullable = false)
     private Account accountTo;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Type type;
 
     public enum Type {
