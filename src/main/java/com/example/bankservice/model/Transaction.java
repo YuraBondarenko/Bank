@@ -1,5 +1,6 @@
 package com.example.bankservice.model;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +23,7 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Min(0)
-    private double amount;
+    private BigDecimal amount;
     @Column(nullable = false)
     private LocalDateTime date;
     @ManyToOne

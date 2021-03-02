@@ -1,6 +1,7 @@
 package com.example.bankservice.model;
 
 import com.example.bankservice.model.enums.Currency;
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -25,7 +26,7 @@ public class Account {
     @Column(unique = true, name = "account_number", nullable = false)
     private String accountNumber;
     @Min(0)
-    private double balance;
+    private BigDecimal balance;
     @Column(name = "is_active")
     private boolean isActive;
     @Enumerated(EnumType.STRING)
@@ -36,8 +37,8 @@ public class Account {
     @JoinColumn(nullable = false)
     private User user;
 
-    public void setBalance(double balance) {
-        if (balance <= 0) {
+    public void setBalance(BigDecimal balance) {
+        if (balance.compareTo(BigDecimal.ZERO) < 0) {
             throw new ArithmeticException("Balance after transaction cannot be less than 0");
         }
         this.balance = balance;

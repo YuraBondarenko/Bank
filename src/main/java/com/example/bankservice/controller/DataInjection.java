@@ -8,6 +8,7 @@ import com.example.bankservice.service.RoleService;
 import com.example.bankservice.service.TransactionService;
 import com.example.bankservice.service.UserService;
 import com.example.bankservice.service.impl.AccountServiceImpl;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Set;
 import javax.annotation.PostConstruct;
@@ -44,7 +45,7 @@ public class DataInjection {
         firstAccount.setActive(true);
         firstAccount.setUser(user);
         firstAccount.setAccountNumber("1111-1111");
-        firstAccount.setBalance(1000.0);
+        firstAccount.setBalance(BigDecimal.valueOf(1000));
         firstAccount.setCurrency(Currency.EUR);
         accountService.save(firstAccount);
 
@@ -52,16 +53,16 @@ public class DataInjection {
         secondAccount.setActive(true);
         secondAccount.setUser(user);
         secondAccount.setAccountNumber("1111-1112");
-        secondAccount.setBalance(100000.0);
+        secondAccount.setBalance(BigDecimal.valueOf(100000));
         secondAccount.setCurrency(Currency.EUR);
         accountService.save(secondAccount);
 
-        transactionService.save(firstAccount, secondAccount, 400.0);
-        transactionService.save(firstAccount, secondAccount, 400.0);
-        transactionService.save(firstAccount, secondAccount, 400.0);
-        transactionService.save(firstAccount, secondAccount, 400.0);
-        transactionService.save(firstAccount, secondAccount, 400.0);
-        transactionService.save(firstAccount, secondAccount, 400.0);
+        transactionService.save(firstAccount, secondAccount, BigDecimal.valueOf(400));
+        transactionService.save(firstAccount, secondAccount, BigDecimal.valueOf(400));
+        transactionService.save(firstAccount, secondAccount, BigDecimal.valueOf(400));
+        transactionService.save(firstAccount, secondAccount, BigDecimal.valueOf(400));
+        transactionService.save(firstAccount, secondAccount, BigDecimal.valueOf(400));
+        transactionService.save(firstAccount, secondAccount, BigDecimal.valueOf(400));
 
         transactionService.getAllByAccount(0, 3, firstAccount).forEach(System.out::println);
         System.out.println(user.toString());
